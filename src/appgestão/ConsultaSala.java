@@ -226,19 +226,19 @@ public class ConsultaSala extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
        Connection conn = null;
         Statement stmt;
-        String queryl = "DELETE FROM aluno WHERE (nome=";
+        String queryl = "DELETE FROM sala WHERE (nome=";
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
             conn = (Connection) DriverManager.getConnection("jdbc:mysql://localhost/minhadb", "root", "root");
             stmt = (Statement) conn.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_UPDATABLE);
-            String sql = queryl + "'" + txtNome.getText() + "' AND sobrenome='" + txtLotação.getText() + "')";
+            String sql = queryl + "'" + txtNome.getText() + "' AND Lotação='" + txtLotação.getText() + "')";
             JOptionPane.showMessageDialog(null, sql);
             int i = 0;
             i = stmt.executeUpdate(sql); // Executa o comando SQL
             stmt.close();
             
             if (i > 0) {
-                JOptionPane.showMessageDialog(null, "Aluno excluido com sucesso!");
+                JOptionPane.showMessageDialog(null, "Sala de Eventos excluida com sucesso!");
                 txtNome.setText("");
                 txtLotação.setText("");
             }
